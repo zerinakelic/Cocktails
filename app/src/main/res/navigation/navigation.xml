@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/overviewFragment">
+
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.example.projekat.first.FirstFragment"
+        android:label="FirstFragment" >
+        <argument
+            android:name="clickedDrink"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/overviewFragment"
+        android:name="com.example.projekat.overview.OverviewFragment"
+        android:label="OverviewFragment" >
+        <action
+            android:id="@+id/action_overviewFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+    </fragment>
+</navigation>
