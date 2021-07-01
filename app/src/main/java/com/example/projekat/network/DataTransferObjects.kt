@@ -15,17 +15,6 @@ data class NetworkModel(
     val strDrinkThumb: String
 )
 
-fun NetworkContainer.asDomainModel(): List<Model> {
-    return drinks.map {
-        Model(
-            idDrink = it.idDrink,
-            strDrink = it.strDrink,
-            strCategory = it.strCategory,
-            strInstructions = it.strInstructions,
-            strDrinkThumb = it.strDrinkThumb
-        )
-    }
-}
 fun NetworkContainer.asDatabaseModel(): List<DatabaseModel> {
     return drinks.map {
         DatabaseModel(

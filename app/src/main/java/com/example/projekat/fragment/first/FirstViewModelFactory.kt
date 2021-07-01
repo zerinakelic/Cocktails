@@ -1,10 +1,10 @@
-package com.example.projekat.first
+package com.example.projekat.fragment.first
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-class ViewModelFactory(private val application: Application, private val clickedDrink: String) : ViewModelProvider.Factory {
+class FirstViewModelFactory(private val application: Application, private val clickedDrink: String) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(FirstViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")

@@ -6,7 +6,6 @@ import com.example.projekat.network.Model
 
 @Entity
 data class DatabaseModel constructor(
-
     @PrimaryKey
     val idDrink: String,
     val strDrink: String,
@@ -25,4 +24,14 @@ fun List<DatabaseModel>.asDomainModel(): List<Model> {
             strDrinkThumb = it.strDrinkThumb
         )
     }
+}
+
+fun DatabaseModel.mapOneModel(): Model {
+    return Model(
+            idDrink = this.idDrink,
+            strDrink = this.strDrink,
+            strCategory = this.strCategory,
+            strInstructions = this.strInstructions,
+            strDrinkThumb = this.strDrinkThumb
+        )
 }

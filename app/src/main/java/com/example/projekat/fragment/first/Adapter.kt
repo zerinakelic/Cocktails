@@ -1,18 +1,15 @@
-package com.example.projekat.first
+package com.example.projekat.fragment.first
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projekat.R
 import com.example.projekat.databinding.ListItemBinding
 import com.example.projekat.network.Model
 
-class MyAdapter() : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
-
+class MyAdapter(private val clickListener: ItemClickListener) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
     // list that Adapter will show
     var drinks: List<Model> = emptyList()
@@ -23,15 +20,15 @@ class MyAdapter() : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
             // element in our RecyclerView to be invalidated.
         }
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val withDataBinding: ListItemBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
             MyViewHolder.layout,
             parent, false
         )
-        return MyViewHolder(withDataBinding)
+        return MyViewHolder(withDataBinding).listen { position, _ ->
+            clickListener.onCocktailClicked(drinks[position].strDrink)
+        }
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -49,6 +46,13 @@ class MyAdapter() : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
             @LayoutRes
             val layout = R.layout.list_item
         }
+    }
+
+    private fun <T : RecyclerView.ViewHolder> T.listen(event: (position: Int, type: Int) -> Unit): T {
+        itemView.setOnClickListener {
+            event.invoke(adapterPosition, itemViewType)
+        }
+        return this
     }
 
 

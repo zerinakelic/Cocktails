@@ -6,14 +6,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".overview.OverviewFragment">
-
+        tools:context=".fragment.overview.OverviewFragment"
+        android:background="@color/indigo">
 
         <Button
             android:id="@+id/button_margarita"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="200dp"
             android:text="Margarita"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -22,11 +22,11 @@
             app:layout_constraintTop_toBottomOf="@+id/id_order_drink" />
 
         <Button
-            android:id="@+id/button_zorro"
+            android:id="@+id/button_caipirinha"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Zorro"
+            android:text="Caipirinha"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -34,37 +34,51 @@
             app:layout_constraintTop_toBottomOf="@+id/button_margarita" />
 
         <Button
-            android:id="@+id/button_bijou"
+            android:id="@+id/button_martini"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Bijou"
+            android:text="Martini"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_zorro" />
+            app:layout_constraintTop_toBottomOf="@+id/button_caipirinha" />
 
         <Button
-            android:id="@+id/button_melya"
+            android:id="@+id/button_mojito"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Melya"
+            android:text="Mojito"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_bijou" />
+            app:layout_constraintTop_toBottomOf="@+id/button_martini" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="175dp"
+            android:layout_height="175dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/id_order_drink"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:lottie_url="https://assets1.lottiefiles.com/packages/lf20_rnnrduuq.json"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
 
         <TextView
             android:id="@+id/id_order_drink"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="Order a drink"
+            android:text="Menu"
             android:textAlignment="center"
             android:textSize="34sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
