@@ -11,7 +11,8 @@ import com.example.projekat.repository.ModelRepository
 
 class CocktailDetailsViewModel(
     application: Application,
-    private val cocktailName: String
+    private val cocktailName: String,
+    private val clickListener: ShareListener
 ) : AndroidViewModel(application) {
 
     private val repository = ModelRepository(getDatabase(application))
@@ -23,5 +24,7 @@ class CocktailDetailsViewModel(
         }
     }
 
-
+    fun shareClicked() {
+        clickListener.shareClicked()
+    }
 }

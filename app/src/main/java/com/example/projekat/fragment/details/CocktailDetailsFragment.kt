@@ -1,5 +1,6 @@
 package com.example.projekat.fragment.details
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,11 +12,30 @@ import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.example.projekat.R
 import com.example.projekat.databinding.FragmentCocktailDetailsBinding
+import com.example.projekat.network.Model
 
 class CocktailDetailsFragment : Fragment() {
 
     private lateinit var cocktailName: String
     private lateinit var binding: FragmentCocktailDetailsBinding
+    private var cocktail = Model()
+    private val clickListener: ShareListener = object : ShareListener {
+
+        override fun shareClicked() {
+            val intent = Intent(Intent.ACTION_SEND)
+            val name = cocktail.strDrink
+            val instructions = cocktail.strInstructions
+            val shareBody = "$name. $instructions"
+            intent.type = "text/plain"
+            intent.putExtra(
+                Intent.EXTRA_SUBJECT,
+                "Share Subject"
+            )
+            intent.putExtra(Intent.EXTRA_TEXT, shareBody)
+            startActivity(Intent.createChooser(intent, "Share Using"))
+        }
+
+    }
 
     private val viewModel: CocktailDetailsViewModel by lazy {
         val activity = requireNotNull(this.activity) {
@@ -23,7 +43,7 @@ class CocktailDetailsFragment : Fragment() {
         }
         ViewModelProvider(
             this,
-            DetailsViewModelFactory(activity.application, cocktailName)
+            DetailsViewModelFactory(activity.application, cocktailName, clickListener)
         ).get(CocktailDetailsViewModel::class.java)
     }
 
@@ -46,6 +66,7 @@ class CocktailDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getCocktail().observe(viewLifecycleOwner, { cocktail ->
+            this.cocktail = cocktail
             binding.cocktailName.text = cocktail.strDrink
             binding.instructions.text = cocktail.strInstructions
             binding.image.load(cocktail.strDrinkThumb) {

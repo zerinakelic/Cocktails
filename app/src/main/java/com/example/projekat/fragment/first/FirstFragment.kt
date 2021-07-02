@@ -19,7 +19,7 @@ class FirstFragment : Fragment() {
     //za search
     private lateinit var adapter: ArrayAdapter<*>
     private lateinit var clickedDrink: String
-    val clickListener: ItemClickListener = object : ItemClickListener {
+    private val clickListener: ItemClickListener = object : ItemClickListener {
         override fun onCocktailClicked(name: String) {
             val view = view ?: return
             view.findNavController().navigate(FirstFragmentDirections.actionFirstFragmentToDetailsScreen(name))
