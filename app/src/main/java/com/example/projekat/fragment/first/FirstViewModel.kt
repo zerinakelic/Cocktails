@@ -1,8 +1,8 @@
 package com.example.projekat.fragment.first
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
+import com.example.projekat.database.DatabaseModel
 import com.example.projekat.database.asDomainModel
 import com.example.projekat.database.getDatabase
 import com.example.projekat.network.Model
@@ -15,7 +15,6 @@ import kotlinx.coroutines.withContext
 class FirstViewModel(application: Application, private val clickedDrink: String) : AndroidViewModel(application) {
 
     private val modelRepository = ModelRepository(getDatabase(application))
-
     private val drinksList = modelRepository.drinks
 
     private val _visible: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -27,7 +26,7 @@ class FirstViewModel(application: Application, private val clickedDrink: String)
         refreshDataFromRepository()
     }
 
-    private fun refreshDataFromRepository() {
+    fun refreshDataFromRepository() {
         viewModelScope.launch {
             withContext(Dispatchers.Default) {
                 fetchCocktails()
@@ -42,7 +41,7 @@ class FirstViewModel(application: Application, private val clickedDrink: String)
 
     fun getAllDrinks(): LiveData<List<Model>> {
         return Transformations.map(drinksList) {
-            it.asDomainModel()
+            it?.asDomainModel()
         }
     }
 }

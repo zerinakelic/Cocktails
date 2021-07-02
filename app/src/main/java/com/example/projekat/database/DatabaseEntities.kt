@@ -14,7 +14,8 @@ data class DatabaseModel constructor(
     val strDrinkThumb: String
 )
 
-fun List<DatabaseModel>.asDomainModel(): List<Model> {
+fun List<DatabaseModel>?.asDomainModel(): List<Model> {
+    if (this.isNullOrEmpty()) return arrayListOf()
     return map {
         Model(
             idDrink = it.idDrink,

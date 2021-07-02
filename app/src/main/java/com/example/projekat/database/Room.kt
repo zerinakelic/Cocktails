@@ -6,7 +6,7 @@ import androidx.room.*
 
 @Dao
 interface ModelDao {
-    @Query("select * from databasemodel")
+    @Query("select * from DatabaseModel")
     fun getItemsFromDatabase(): LiveData<List<DatabaseModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

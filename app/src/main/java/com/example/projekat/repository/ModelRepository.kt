@@ -2,8 +2,10 @@ package com.example.projekat.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.map
 import com.example.projekat.database.Baza
 import com.example.projekat.database.DatabaseModel
+import com.example.projekat.database.asDomainModel
 import com.example.projekat.network.ApiObject
 import com.example.projekat.network.asDatabaseModel
 import kotlinx.coroutines.Dispatchers
@@ -26,5 +28,6 @@ class ModelRepository(private val database: Baza) {
             }
         }
     }
+
 
 }

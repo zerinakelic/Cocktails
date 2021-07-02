@@ -1,9 +1,8 @@
 package com.example.projekat.fragment.first
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.view.MenuItem.SHOW_AS_ACTION_ALWAYS
 import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -19,6 +18,7 @@ class FirstFragment : Fragment() {
     //za search
     private lateinit var adapter: ArrayAdapter<*>
     private lateinit var clickedDrink: String
+    private var isFilterEnabled = false
     private val clickListener: ItemClickListener = object : ItemClickListener {
         override fun onCocktailClicked(name: String) {
             val view = view ?: return
@@ -45,6 +45,11 @@ class FirstFragment : Fragment() {
         })
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -66,5 +71,35 @@ class FirstFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
+        if (isFilterEnabled) {
+            menu.add(R.string.remove_filters).setShowAsAction(SHOW_AS_ACTION_ALWAYS)
+        } else {
+            menu.add(R.string.show_ordinary_drinks).setShowAsAction(SHOW_AS_ACTION_ALWAYS)
+        }
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId != 0) {
+            return false
+        }
+
+        if (isFilterEnabled) {
+            viewModel.refreshDataFromRepository()
+        } else {
+            val items = viewModelAdapter?.drinks ?: return false
+            viewModelAdapter?.drinks = items.filter { ORDINARY_COCKTAIL_TYPE.equals(it.strCategory, true) }
+        }
+        isFilterEnabled = !isFilterEnabled
+        activity?.invalidateOptionsMenu()
+        return super.onOptionsItemSelected(item)
+    }
+
+    companion object {
+        private const val ORDINARY_COCKTAIL_TYPE = "Ordinary Drink"
     }
 }
