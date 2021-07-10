@@ -15,8 +15,6 @@ import com.example.projekat.databinding.FirstFragmentBinding
 
 class FirstFragment : Fragment() {
 
-    //za search
-    private lateinit var adapter: ArrayAdapter<*>
     private lateinit var clickedDrink: String
     private var isFilterEnabled = false
     private val clickListener: ItemClickListener = object : ItemClickListener {
@@ -41,7 +39,7 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getAllDrinks().observe(viewLifecycleOwner, { drinks ->
-            viewModelAdapter?.drinks = drinks
+            viewModelAdapter?.drinks = drinks //saljemo listu u adapter
         })
     }
 
@@ -58,6 +56,7 @@ class FirstFragment : Fragment() {
             inflater, R.layout.first_fragment, container, false
         )
         binding.lifecycleOwner = viewLifecycleOwner
+
 
         val args = FirstFragmentArgs.fromBundle(requireArguments())
         clickedDrink = args.clickedDrink
@@ -84,17 +83,13 @@ class FirstFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId != 0) {
-            return false
-        }
-
         if (isFilterEnabled) {
             viewModel.refreshDataFromRepository()
         } else {
             val items = viewModelAdapter?.drinks ?: return false
             viewModelAdapter?.drinks = items.filter { ORDINARY_COCKTAIL_TYPE.equals(it.strCategory, true) }
         }
-        isFilterEnabled = !isFilterEnabled
+       isFilterEnabled =!isFilterEnabled
         activity?.invalidateOptionsMenu()
         return super.onOptionsItemSelected(item)
     }

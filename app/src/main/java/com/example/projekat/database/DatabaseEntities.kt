@@ -27,12 +27,3 @@ fun List<DatabaseModel>?.asDomainModel(): List<Model> {
     }
 }
 
-fun DatabaseModel.mapOneModel(): Model {
-    return Model(
-            idDrink = this.idDrink,
-            strDrink = this.strDrink,
-            strCategory = this.strCategory,
-            strInstructions = this.strInstructions,
-            strDrinkThumb = this.strDrinkThumb
-        )
-}

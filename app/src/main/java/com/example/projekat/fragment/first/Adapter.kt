@@ -11,7 +11,6 @@ import com.example.projekat.network.Model
 
 class MyAdapter(private val clickListener: ItemClickListener) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
-    // list that Adapter will show
     var drinks: List<Model> = emptyList()
         set(value) {
             field = value
@@ -39,9 +38,7 @@ class MyAdapter(private val clickListener: ItemClickListener) : RecyclerView.Ada
 
     override fun getItemCount() = drinks.size
 
-    //uzima binding iz list_item.xml
     class MyViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-
         companion object {
             @LayoutRes
             val layout = R.layout.list_item

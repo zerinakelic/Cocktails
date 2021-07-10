@@ -41,7 +41,6 @@ class OverviewFragment : Fragment() {
         inflater.inflate(R.menu.navdrawermenu, menu)
     }
 
-    //menu - ova funkcija radi za sve iteme u menu - samo id itema mora biti isti kao id aktivnosti s kojom ga povezujemo
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
                 || super.onOptionsItemSelected(item)

@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/firstFragment"
         android:name="com.example.projekat.fragment.first.FirstFragment"
-        android:label="FirstFragment">
+        android:label="XO Cocktails">
         <argument
             android:name="clickedDrink"
             app:argType="string" />
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/overviewFragment"
         android:name="com.example.projekat.fragment.overview.OverviewFragment"
-        android:label="OverviewFragment">
+        android:label="XO Cocktails">
         <action
             android:id="@+id/action_overviewFragment_to_firstFragment"
             app:destination="@id/firstFragment" />
@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/cocktailDetailsFragment"
         android:name="com.example.projekat.fragment.details.CocktailDetailsFragment"
-        android:label="CocktailDetailsFragment">
+        android:label="XO Cocktails">
         <argument
             android:name="cocktail"
             app:argType="string" />

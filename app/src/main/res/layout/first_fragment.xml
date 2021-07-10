@@ -21,8 +21,9 @@
             android:id="@+id/shareView"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:visibility="@{viewModel.listVisible ? View.GONE : View.VISIBLE}"            app:layout_constraintEnd_toEndOf="parent"
             android:layout_gravity="center"
+            android:visibility="@{viewModel.listVisible ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_url="https://assets2.lottiefiles.com/packages/lf20_FcABlv.json" />
@@ -32,9 +33,9 @@
             android:id="@+id/id_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/list_item"
+            android:layout_marginTop="20dp"
             android:visibility="@{viewModel.listVisible ? View.VISIBLE : View.GONE}"
-            />
+            tools:listitem="@layout/list_item" />
     </FrameLayout>
 
 </layout>

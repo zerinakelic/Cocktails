@@ -2,20 +2,25 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/indigo">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragment.overview.OverviewFragment"
-        android:background="@color/indigo">
+        android:background="@color/indigo"
+        tools:context=".fragment.overview.OverviewFragment">
 
         <Button
             android:id="@+id/button_margarita"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="200dp"
+            android:padding="15dp"
             android:text="Margarita"
             android:textSize="20sp"
+            app:backgroundTint="@color/orange_gold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,8 +31,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:padding="15dp"
             android:text="Caipirinha"
             android:textSize="20sp"
+            app:backgroundTint="@color/orange_gold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,8 +45,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:padding="15dp"
             android:text="Martini"
             android:textSize="20sp"
+            app:backgroundTint="@color/orange_gold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,8 +59,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:padding="15dp"
             android:text="Mojito"
             android:textSize="20sp"
+            app:backgroundTint="@color/orange_gold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,12 +73,12 @@
             android:layout_width="175dp"
             android:layout_height="175dp"
             android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@id/id_order_drink"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:lottie_url="https://assets1.lottiefiles.com/packages/lf20_rnnrduuq.json"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/id_order_drink"
             app:lottie_autoPlay="true"
-            app:lottie_loop="true"/>
+            app:lottie_loop="true"
+            app:lottie_url="https://assets1.lottiefiles.com/packages/lf20_rnnrduuq.json" />
 
         <TextView
             android:id="@+id/id_order_drink"
@@ -76,11 +87,12 @@
             android:layout_marginTop="32dp"
             android:text="Menu"
             android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="34sp"
             android:textStyle="bold"
-            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
 </layout>

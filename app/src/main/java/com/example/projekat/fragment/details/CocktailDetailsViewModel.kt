@@ -1,6 +1,7 @@
 package com.example.projekat.fragment.details
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
@@ -26,5 +27,8 @@ class CocktailDetailsViewModel(
 
     fun shareClicked() {
         clickListener.shareClicked()
+    }
+    fun orderDrink() {
+        Toast.makeText(getApplication(), "Drink ordered", Toast.LENGTH_SHORT).show()
     }
 }
